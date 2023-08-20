@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <title>LoveVincy</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+</style>
+<style>
+        html, body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background: rgb(0, 0, 0);
+        }
+
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #child {
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        h4 {
+            font-family: "STKaiti";
+            font-size: 40px;
+            color: #f584b7;
+            position: relative;
+        }
+    </style>
+
+<script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    var texts = 'I LOVE U'.split('');
+
+    var fontSize = 16;
+    var columns = canvas.width / fontSize;
+    // 用于计算输出文字时坐标，所以长度即为列数
+    var drops = [];
+    //初始值
+    for (var x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+
+    function draw() {
+        //让背景逐渐由透明到不透明
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        //文字颜色
+        ctx.fillStyle = '#f584b7';
+        ctx.font = fontSize + 'px arial';
+        //逐行输出文字
+        for (var i = 0; i < drops.length; i++) {
+            var text = texts[Math.floor(Math.random() * texts.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height || Math.random() > 0.95) {
+                drops[i] = 0;
+            }
+
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 33);
+</script>
+</body>
+</html>
+<div id="child"><h4>
+💗致我汐 :<br />
+七夕快乐呐汐 <br />  
+我仍然想与你携手攻顶，而非顶峰相见<br />
+祝我俩终成眷属<br />
+我爱你 汐💗💗💗<br /><br />
+虽然礼物提早给你了没了惊喜 <br />
+但仪式感还是要有的呢 <br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;安💗
+</h4></div>
+<canvas id="pinkboard"></canvas>
